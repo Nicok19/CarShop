@@ -1,15 +1,25 @@
 import React from "react";
+import { AppProvider } from "./AppContext";
 import Header from "./Header";
 import "./App.css";
 import CarouselImg from "./carousel";
+import SectionProducts from "./Products";
+
+
 const App = () => {
   return (
-    <div>
-      <div className="marginContainer">
-        <Header />
-        <CarouselImg />
+    <AppProvider>
+      <div>
+        <div className="marginContainer">
+
+          <Header />
+          <CarouselImg />
+          <SectionProducts />
+
+
+        </div>
       </div>
-    </div>
+    </AppProvider>
   );
 };
 
