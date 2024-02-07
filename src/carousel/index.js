@@ -1,53 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Carousel = ({ images }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const goToPreviousSlide = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToNextSlide = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  useEffect(() => {
-    const intervalId = setInterval(goToNextSlide, 3000);
-
-    return () => clearInterval(intervalId);
-  }, [images.length]);
-
+function BootstrapCarousel() {
   return (
-    <div className="carousel-container">
-      <div className="carousel">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={process.env.PUBLIC_URL + '/img/' + image}
-            alt={`Slide ${index}`}
-            style={{
-              display: index === currentImageIndex ? 'block' : 'none',
-              width: '100%',
-              height: 'auto',
-            }}
-          />
-        ))}
-      </div>
-    </div>
+    <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={`${process.env.PUBLIC_URL}/img/diapo1.png`}
+          alt="First slide"
+        />
+        <Carousel.Caption>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={`${process.env.PUBLIC_URL}/img/diapo2.png`}
+          alt="Second slide"
+        />
+        <Carousel.Caption>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={`${process.env.PUBLIC_URL}/img/diapo3.png`}
+          alt="Third slide"
+        />
+        <Carousel.Caption>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
   );
-};
+}
 
-const CarouselImg = () => {
-  const images = ['diapo1.png', 'diapo2.png', 'diapo3.png'];
+export default BootstrapCarousel;
 
-  return <Carousel images={images} />;
-};
 
-export default CarouselImg;
 
 
 
