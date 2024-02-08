@@ -1,34 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useFetchProducts from '../CustomHooks/GetFetchApi';
+import PriceFilter from './PriceFilter';
 
 const Products = () => {
-    const { products, loading, error } = useFetchProducts('https://api.escuelajs.co/api/v1/products');
-    const [visibleProducts, setVisibleProducts] = useState(8);
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(8); 
+    const { products: fetchedProducts, loading, error } = useFetchProducts('https://api.escuelajs.co/api/v1/products');
+
+    useEffect(() => {
+        if (!loading && fetchedProducts) {
+            setProducts(fetchedProducts);
+            setFilteredProducts(fetchedProducts);
+        }
+    }, [loading, fetchedProducts]);
+
+    const applyPriceFilter = (min, max) => {
+        const filtered = products.filter(product => {
+            if (min !== '' && product.price < min) return false;
+            if (max !== '' && product.price > max) return false;
+            return true;
+        });
+        setFilteredProducts(filtered);
+    };
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
-    const loadMoreProducts = () => {
-        setVisibleProducts(prevVisibleProducts => prevVisibleProducts + 8);
-    };
-
-    const showLessProducts = () => {
-        setVisibleProducts(8);
-    };
-
-    // Función para obtener la imagen del producto o la imagen por defecto
-    const getProductImage = (product) => {
-        return product.images.length > 0 ? product.images[0] : 'https://img.freepik.com/vector-gratis/ilustracion-icono-galeria_53876-27002.jpg?w=1060&t=st=1707338435~exp=1707339035~hmac=c9a76ba72e152f63d705628e31985ce9de655e40ba4eb7ee4db7ecca3e8eef96';
-    };
-
     return (
         <div>
+            <PriceFilter applyPriceFilter={applyPriceFilter} />
             <div className='containerProducts'>
-                {products.slice(0, visibleProducts).map((product) => (
+                {currentProducts.map(product => (
                     <div className='allProducts' key={product.id}>
-                        <p className='category'> {product.category.name}</p>
-                        {/* Utilizamos la función getProductImage para obtener la imagen */}
-                        <img src={getProductImage(product)} alt={product.title} />
+                        <p className='category'>{product.category.name}</p>
+                        {product.images.length > 0 && <img src={product.images[0]} alt={product.title} />} 
                         <div className='product'>
                             <h3>{product.title}</h3>
                         </div>
@@ -38,11 +51,24 @@ const Products = () => {
                     </div>
                 ))}
             </div>
+            <div className='pagination'>
+                {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (
+                    <button className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'} key={index} onClick={() => paginate(index + 1)}>
+                        {index + 1}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 };
 
 export default Products;
+
+
+
+
+
+
 
 
 
