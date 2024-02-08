@@ -13,9 +13,6 @@ const PriceFilter = ({ applyPriceFilter }) => {
     return (
         <div className='priceFilter'>
 
-        <div className='textProducts'>
-        <h2>Our Products</h2>
-        </div>
 
         <div className='filter'>
             <input id='price' type="number" placeholder="Min Price" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} />

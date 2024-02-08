@@ -6,7 +6,11 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(8); 
+    const [productsPerPage] = useState(8);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [minPrice, setMinPrice] = useState('');
+    const [maxPrice, setMaxPrice] = useState('');
     const { products: fetchedProducts, loading, error } = useFetchProducts('https://api.escuelajs.co/api/v1/products');
 
     useEffect(() => {
@@ -17,12 +21,8 @@ const Products = () => {
     }, [loading, fetchedProducts]);
 
     const applyPriceFilter = (min, max) => {
-        const filtered = products.filter(product => {
-            if (min !== '' && product.price < min) return false;
-            if (max !== '' && product.price > max) return false;
-            return true;
-        });
-        setFilteredProducts(filtered);
+        setMinPrice(min);
+        setMaxPrice(max);
     };
 
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -31,26 +31,80 @@ const Products = () => {
 
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
+    const handleSearchChange = event => {
+        setSearchTerm(event.target.value);
+    };
+
+    const handleCategoryChange = event => {
+        setSelectedCategory(event.target.value);
+    };
+
+   
+    useEffect(() => {
+        let filtered = products.filter(product => {
+           
+            const titleMatch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
+           
+            const categoryMatch = selectedCategory ? product.category.name === selectedCategory : true;
+           
+            const priceMatch = (minPrice === '' || product.price >= minPrice) && (maxPrice === '' || product.price <= maxPrice);
+            return titleMatch && categoryMatch && priceMatch;
+        });
+
+        setFilteredProducts(filtered);
+    }, [searchTerm, selectedCategory, minPrice, maxPrice, products]);
+
+
+    const categories = Array.from(new Set(products.map(product => product.category.name)));
+
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
     return (
         <div>
-            <PriceFilter applyPriceFilter={applyPriceFilter} />
-            <div className='containerProducts'>
-                {currentProducts.map(product => (
-                    <div className='allProducts' key={product.id}>
-                        <p className='category'>{product.category.name}</p>
-                        {product.images.length > 0 && <img src={product.images[0]} alt={product.title} />} 
-                        <div className='product'>
-                            <h3>{product.title}</h3>
-                        </div>
-                        <div className='priceDiv'>
-                            <p>{product.price} Usd</p>
-                        </div>
-                    </div>
-                ))}
+            <div className='filterMenu'>
+            <div className='searchElement'>
+            <img src="/img/Mglass.png" alt="Product not found" />
+           
+                <input
+                    type="text"
+                    placeholder="Search by title..."
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                />
+                </div>
+              
+                <select className='categoryFilter' value={selectedCategory} onChange={handleCategoryChange}>
+                    <option value="">All Categories</option>
+                    {categories.map(category => (
+                        <option key={category} value={category}>
+                            {category}
+                        </option>
+                    ))}
+                </select>
+             
+                <PriceFilter applyPriceFilter={applyPriceFilter} />
             </div>
+
+            <div className='containerProducts'>
+                {currentProducts.length > 0 ? (
+                    currentProducts.map(product => (
+                        <div className='allProducts' key={product.id}>
+                            <p className='category'>{product.category.name}</p>
+                            {product.images.length > 0 && <img src={product.images[0]} alt={product.title} />} 
+                            <div className='product'>
+                                <h3>{product.title}</h3>
+                            </div>
+                            <div className='priceDiv'>
+                                <p>{product.price} Usd</p>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <img className='notFound' src="/img/notFound.png" alt="Product not found" />
+                )}
+            </div>
+
             <div className='pagination'>
                 {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (
                     <button className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'} key={index} onClick={() => paginate(index + 1)}>
@@ -63,6 +117,13 @@ const Products = () => {
 };
 
 export default Products;
+
+
+
+
+
+
+
 
 
 

@@ -5,18 +5,14 @@ import "./App.css";
 import CarouselImg from "./carousel";
 import SectionProducts from "./Products";
 
-
 const App = () => {
   return (
     <AppProvider>
       <div>
         <div className="marginContainer">
-
           <Header />
           <CarouselImg />
           <SectionProducts />
-
-
         </div>
       </div>
     </AppProvider>

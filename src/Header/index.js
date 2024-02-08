@@ -1,5 +1,4 @@
 import React from "react";
-import SearchBar from "./SearchBar";
 import "./HeaderStyles.css";
 
 const Header = () => {
@@ -19,11 +18,6 @@ const Header = () => {
 <a href="#">sell your car</a>
   </nav>
 
-
-<div className="search">
-<img src="/img/mGlass.png" alt="logo of the brand" />
-<SearchBar />
-</div>
 
 </div>
 
