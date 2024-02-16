@@ -6,7 +6,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(8);
+    const [productsPerPage] = useState(6);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [minPrice, setMinPrice] = useState('');
@@ -39,21 +39,24 @@ const Products = () => {
         setSelectedCategory(event.target.value);
     };
 
-   
+    const handleResetFilters = () => {
+        setSearchTerm('');
+        setSelectedCategory('');
+        setMinPrice('');
+        setMaxPrice('');
+        setFilteredProducts(products);
+    };
+
     useEffect(() => {
         let filtered = products.filter(product => {
-           
             const titleMatch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
-           
             const categoryMatch = selectedCategory ? product.category.name === selectedCategory : true;
-           
             const priceMatch = (minPrice === '' || product.price >= minPrice) && (maxPrice === '' || product.price <= maxPrice);
             return titleMatch && categoryMatch && priceMatch;
         });
 
         setFilteredProducts(filtered);
     }, [searchTerm, selectedCategory, minPrice, maxPrice, products]);
-
 
     const categories = Array.from(new Set(products.map(product => product.category.name)));
 
@@ -63,27 +66,25 @@ const Products = () => {
     return (
         <div>
             <div className='filterMenu'>
-            <div className='searchElement'>
-            <img src="/img/Mglass.png" alt="Product not found" />
-           
-                <input
-                    type="text"
-                    placeholder="Search by title..."
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                />
+                <div className='searchElement'>
+                    <img src="/img/Mglass.png" alt="magnifying glass" />
+                    <input
+                        type="text"
+                        placeholder="Search by products..."
+                        value={searchTerm}
+                        onChange={handleSearchChange}
+                    />
                 </div>
-              
                 <select className='categoryFilter' value={selectedCategory} onChange={handleCategoryChange}>
-                    <option value="">All Categories</option>
+                    <option value="">All categories</option>
                     {categories.map(category => (
                         <option key={category} value={category}>
                             {category}
                         </option>
                     ))}
                 </select>
-             
                 <PriceFilter applyPriceFilter={applyPriceFilter} />
+                <button className='reset' onClick={handleResetFilters}>Reset</button>
             </div>
 
             <div className='containerProducts'>
@@ -117,6 +118,7 @@ const Products = () => {
 };
 
 export default Products;
+
 
 
 
