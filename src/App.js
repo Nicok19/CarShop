@@ -2,7 +2,7 @@ import React from "react";
 import { AppProvider } from "./AppContext";
 import Header from "./Header";
 import "./App.css";
-import CarouselImg from "./carousel";
+import CarouselImg from "./Carousel";
 import SectionProducts from "./Products";
 
 const App = () => {
