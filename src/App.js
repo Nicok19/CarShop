@@ -4,6 +4,7 @@ import Header from "./Header";
 import "./App.css";
 import CarouselImg from "./Carousel";
 import SectionProducts from "./Products";
+import Footer from "./Footer";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <CarouselImg />
           <SectionProducts />
         </div>
+        <Footer/>
       </div>
     </AppProvider>
   );
