@@ -63,6 +63,10 @@ const Products = () => {
     if (loading) return <div>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
+    const handleImageError = (event) => {
+        event.target.src = '/Img/DefoultImg.jpg'; 
+    };
+
     return (
         <div>
             <div className='filterMenu'>
@@ -92,7 +96,11 @@ const Products = () => {
                     currentProducts.map(product => (
                         <div className='allProducts' key={product.id}>
                             <p className='category'>{product.category.name}</p>
-                            {product.images.length > 0 && <img src={product.images[0]} alt={product.title} />} 
+                            {product.images.length > 0 && product.images[0] ? (
+                                <img src={product.images[0]} alt={product.title} onError={handleImageError} />
+                            ) : (
+                                <img src="/img/defaultImage.png" alt="Default" />
+                            )}
                             <div className='product'>
                                 <h3>{product.title}</h3>
                             </div>
@@ -118,6 +126,7 @@ const Products = () => {
 };
 
 export default Products;
+
 
 
 
