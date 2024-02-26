@@ -67,6 +67,17 @@ const Products = () => {
         event.target.src = '/Img/DefoultImg.jpg'; 
     };
 
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const maxPagesToShow = 10;
+    let lastPageToShow = currentPage + maxPagesToShow;
+    if (lastPageToShow > totalPages) {
+        lastPageToShow = totalPages;
+    }
+    let firstPageToShow = lastPageToShow - maxPagesToShow;
+    if (firstPageToShow < 1) {
+        firstPageToShow = 1;
+    }
+
     return (
         <div>
             <div className='filterMenu'>
@@ -115,9 +126,9 @@ const Products = () => {
             </div>
 
             <div className='pagination'>
-                {Array.from({ length: Math.ceil(filteredProducts.length / productsPerPage) }, (_, index) => (
-                    <button className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'} key={index} onClick={() => paginate(index + 1)}>
-                        {index + 1}
+                {Array.from({ length: lastPageToShow - firstPageToShow + 1 }, (_, index) => (
+                    <button className={currentPage === firstPageToShow + index ? 'paginationButton active' : 'paginationButton'} key={firstPageToShow + index} onClick={() => paginate(firstPageToShow + index)}>
+                        {firstPageToShow + index}
                     </button>
                 ))}
             </div>
