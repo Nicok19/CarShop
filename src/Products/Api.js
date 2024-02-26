@@ -64,25 +64,17 @@ const Products = () => {
     if (error) return <div>Error: {error.message}</div>;
 
     const handleImageError = (event) => {
-        event.target.src = 'https://imgur.com/BUcHNmw'; 
+        event.target.src = 'https://i.imgur.com/qZx2cU5.jpg'; 
     };
 
     const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
     const maxPagesToShow = 10;
-    let lastPageToShow = currentPage + maxPagesToShow;
-    if (lastPageToShow > totalPages) {
-        lastPageToShow = totalPages;
-    }
-    let firstPageToShow = lastPageToShow - maxPagesToShow;
-    if (firstPageToShow < 1) {
-        firstPageToShow = 1;
-    }
 
     return (
         <div>
             <div className='filterMenu'>
                 <div className='searchElement'>
-                    <img src="/img/Mglass.png" alt="magnifying glass" />
+                    <img src="https://i.imgur.com/1jR01kG.jpg" alt="magnifying glass" />
                     <input
                         type="text"
                         placeholder="Search by products..."
@@ -126,9 +118,9 @@ const Products = () => {
             </div>
 
             <div className='pagination'>
-                {Array.from({ length: lastPageToShow - firstPageToShow + 1 }, (_, index) => (
-                    <button className={currentPage === firstPageToShow + index ? 'paginationButton active' : 'paginationButton'} key={firstPageToShow + index} onClick={() => paginate(firstPageToShow + index)}>
-                        {firstPageToShow + index}
+                {Array.from({ length: Math.min(totalPages, maxPagesToShow) }, (_, index) => (
+                    <button className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'} key={index + 1} onClick={() => paginate(index + 1)}>
+                        {index + 1}
                     </button>
                 ))}
             </div>
@@ -137,6 +129,7 @@ const Products = () => {
 };
 
 export default Products;
+
 
 
 
