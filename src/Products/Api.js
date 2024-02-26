@@ -64,7 +64,7 @@ const Products = () => {
     if (error) return <div>Error: {error.message}</div>;
 
     const handleImageError = (event) => {
-        event.target.src = '/Img/DefoultImg.jpg'; 
+        event.target.src = 'https://imgur.com/BUcHNmw'; 
     };
 
     const totalPages = Math.ceil(filteredProducts.length / productsPerPage);

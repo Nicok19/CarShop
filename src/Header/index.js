@@ -5,7 +5,7 @@ const Header = () => {
 
     return (
 <div className="menuElements">
-    <img src="/img/logoOriginal.png" alt="logo of the brand" />
+<img src="https://i.imgur.com/VduGXQy.jpg" alt="logo of the brand" />
 
 </div>
 

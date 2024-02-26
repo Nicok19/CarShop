@@ -11,7 +11,8 @@ const Footer = ()=>{
                 <p>Created by Nicolás Bertinat</p>
                 <p>Api: https://api.escuelajs.co/api/v1/products</p>
 
-                <img src="/img/logoWhite.png" alt="logo of the brand" />
+                <img src="https://i.imgur.com/hDSNsVD.jpg" alt="logo of the brand" />
+
                 
             </div>
         </div>
