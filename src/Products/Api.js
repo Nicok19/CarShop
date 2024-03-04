@@ -71,7 +71,7 @@ const Products = () => {
     const maxPagesToShow = 10;
 
     return (
-        <div>
+        <div className='apiAndFliter'>
             <div className='filterMenu'>
                 <div className='searchElement'>
                     <img src="https://i.imgur.com/1jR01kG.jpg" alt="magnifying glass" />
