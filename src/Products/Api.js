@@ -102,7 +102,8 @@ const Products = () => {
                             {product.images.length > 0 && product.images[0] ? (
                                 <img src={product.images[0]} alt={product.title} onError={handleImageError} />
                             ) : (
-                                <img src="/img/defaultImage.png" alt="Default" />
+                                <img src="https://i.imgur.com/Wr87vI8.jpg" alt="Default image" />
+
                             )}
                             <div className='product'>
                                 <h3>{product.title}</h3>
