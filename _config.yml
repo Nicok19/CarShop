@@ -1,29 +1,18 @@
-# Configuración para Jekyll
 
-# Configuración de Sass
+destination: docs
+
 sass:
   sass_dir: _sass
   style: compressed
 
-# Configuración de la URL base (ajústala según tu entorno)
+
 baseurl: ""
 
-# Configuración de la URL de tu sitio (ajústala según tu entorno)
+
 url: "http://localhost:4000"
 
-# Configuración de los plugins (si estás utilizando algún plugin)
+
 plugins:
   - jekyll-feed
 
-# Otras configuraciones posibles
-# title: "Mi Sitio Jekyll"
-# description: "Descripción de mi sitio"
-# theme: jekyll-theme-primer
-# ...
 
-# Configuración de GitHub Pages (si estás utilizando GitHub Pages)
-# github_pages:
-#   gems: ['jekyll-paginate']
-#   theme: jekyll-theme-minimal
-
-# Configuración adicional según las necesidades específicas de tu proyecto
