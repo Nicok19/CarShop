@@ -60,7 +60,7 @@ const Products = () => {
 
     const categories = Array.from(new Set(products.map(product => product.category.name)));
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div className='loadingelement'>Loading...</div>;
     if (error) return <div>Error: {error.message}</div>;
 
     const handleImageError = (event) => {

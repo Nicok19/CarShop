@@ -1,8 +1,9 @@
 .apiAndFliter{
     min-height: 900px;
-    
 }
-
+.loadingelement{
+    margin-bottom: 700px;
+}
 
 .indexElements h2{
     font-size: 30px;
@@ -19,6 +20,7 @@
     flex-direction: row;
     justify-content:center;
     margin-top: 50px;
+    min-height: 900px;
 }
 
 .allProducts {
