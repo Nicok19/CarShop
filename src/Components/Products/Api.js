@@ -6,7 +6,7 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage] = useState(6);
+    const [productsPerPage] = useState(8);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [minPrice, setMinPrice] = useState('');
@@ -21,8 +21,8 @@ const Products = () => {
     }, [loading, fetchedProducts]);
 
     const applyPriceFilter = (min, max) => {
-        setMinPrice(min);
-        setMaxPrice(max);
+        setMinPrice(min.toString()); // Convertir a string para asegurar la consistencia del tipo
+        setMaxPrice(max.toString()); // Convertir a string para asegurar la consistencia del tipo
     };
 
     const indexOfLastProduct = currentPage * productsPerPage;
@@ -39,19 +39,11 @@ const Products = () => {
         setSelectedCategory(event.target.value);
     };
 
-    const handleResetFilters = () => {
-        setSearchTerm('');
-        setSelectedCategory('');
-        setMinPrice('');
-        setMaxPrice('');
-        setFilteredProducts(products);
-    };
-
     useEffect(() => {
         let filtered = products.filter(product => {
             const titleMatch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
             const categoryMatch = selectedCategory ? product.category.name === selectedCategory : true;
-            const priceMatch = (minPrice === '' || product.price >= minPrice) && (maxPrice === '' || product.price <= maxPrice);
+            const priceMatch = (minPrice === '' || product.price >= parseFloat(minPrice)) && (maxPrice === '' || product.price <= parseFloat(maxPrice));
             return titleMatch && categoryMatch && priceMatch;
         });
 
@@ -91,7 +83,6 @@ const Products = () => {
                     ))}
                 </select>
                 <PriceFilter applyPriceFilter={applyPriceFilter} />
-                <button className='reset' onClick={handleResetFilters}>Reset</button>
             </div>
 
             <div className='containerProducts'>
@@ -103,7 +94,6 @@ const Products = () => {
                                 <img src={product.images[0]} alt={product.title} onError={handleImageError} />
                             ) : (
                                 <img src="https://i.imgur.com/Wr87vI8.jpg" alt="Default" />
-
                             )}
                             <div className='product'>
                                 <h3>{product.title}</h3>
