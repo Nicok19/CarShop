@@ -1,9 +1,9 @@
 import React from "react";
-import { AppProvider } from "./AppContext";
-import Header from "./Header";
-import "./App.css";
-import SectionProducts from "./Products";
-import Footer from "./Footer";
+import { AppProvider } from "../AppContext";
+import Header from "../../Components/Header";
+import "./Index.css";
+import SectionProducts from "../../Components/Products";
+import Footer from "../../Components/Footer";
 
 const App = () => {
   return (
