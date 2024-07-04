@@ -1,7 +1,15 @@
 .apiAndFliter{
     min-height: 900px;
-
 }
+
+
+.filterMenu{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .loadingelement{
     margin-bottom: 700px;
 }
@@ -73,52 +81,28 @@
    display: inline-block;
 }
 
-#price{
+#minPrice{
    font-size: 15px; 
-   padding: 5px;
-   width: 100px;
+   padding-left: 20px;
    border-radius: 10px;
-   margin-right: 7px;
+   margin-right: 20px;
    height: 50px;
    color: grey;
    border:  solid 1px grey;
 }
 
+#maxPrice{
+    font-size: 15px; 
+    padding-left: 20px;
+    border-radius: 10px;
+    margin-right: 7px;
+    height: 50px;
+    color: grey;
+    border:  solid 1px grey;
+ }
+
 .textProducts h2{
     font-size: 26px;
-}
-
-.apply{
-    padding: 10px;
-    background-color: #4A4EF5;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    height: 50px;
-}
-
-.apply:hover{
-    background-color: #F9B510;
-}
-
-.reset{
-    padding: 10px;
-    background-color: grey;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    height: 50px;
-    margin-left: 90px;
-}
-
-.reset:hover{
-    background-color:red;
 }
 
 
@@ -127,12 +111,13 @@
 }
 
 .searchElement input {
-    padding: 10px 30px 10px 10px; 
+    padding: 10px 50px 10px 20px; 
     border-radius: 10px;
     border: 1px solid grey;
     color: grey;
     position: relative; 
     height: 50px;
+    width: 300px;
 }
 
 .searchElement img {
@@ -141,7 +126,7 @@
     right: 10px; 
     transform: translateY(-50%); 
     width: 20px;
-    height: 30px;
+    height: 25px;
     z-index: 1; 
 }
 
@@ -153,14 +138,17 @@
 }
 
 .categoryFilter{
-    padding:10px;
+    padding-left: 20px;
     border-radius: 10px;
      margin-left: 30px;
-     margin-right: 30px;
+     margin-right: 50px;
      height: 50px;
+     width: 200px;
      border: 1px solid grey;
-     color: grey;   
-}
+     color: grey;
+     }
+     
+
 
 
 .paginationButton{
@@ -180,7 +168,7 @@ color: black;
 }
 
 .paginationButton.active {
-    background-color: #4A4EF5;
+    background-color: grey;
     color: white;
 }
 
@@ -190,10 +178,5 @@ color: black;
     margin-top: 100px;
 }
 
-.filterMenu{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
+
 
