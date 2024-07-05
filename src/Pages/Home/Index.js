@@ -1,26 +1,41 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { AppProvider } from "../AppContext";
 import Header from "../../Components/Header";
 import "./Index.css";
-import SectionProducts from "../../Components/Products";
+import SectionProducts from "../../Components/ShowProducts/Products";
 import Footer from "../../Components/Footer";
-import Banner from "../../Components/Banner";
-import ShowApi from "../../Components/ShowApi/Index";
+import Banner from "../../Components/Home/Banner";
+import ShowApi from "../../Components/Home/ShowApi/Index";
+import ProductDetail from "../../Components/ShowProducts/Products/ProductDetail"; 
+
+const AppContent = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  return (
+    <div>
+      <Header />
+      {isHomePage && <Banner />}
+      <Routes>
+        <Route exact path="/" element={<SectionProducts />} />
+        <Route path="/:productSlug" element={<ProductDetail />} />
+      </Routes>
+      {isHomePage && <ShowApi />}
+      <Footer />
+    </div>
+  );
+};
 
 const App = () => {
   return (
     <AppProvider>
-      <div>
-        <div className="marginContainer">
-          <Header />
-          <Banner />
-          <SectionProducts />
-        </div>
-        <ShowApi/>
-        <Footer/>
-      </div>
+      <Router>
+        <AppContent />
+      </Router>
     </AppProvider>
   );
 };
 
 export default App;
+

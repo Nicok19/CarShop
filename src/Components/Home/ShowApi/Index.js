@@ -13,8 +13,8 @@ return(
 <h2 className="showApi__title">This is not my Api</h2>
 
 <p className="showApi__description">I am consuming the product content, including images, texts, and prices, from an API called Platzi Fake API. They are responsible for the product information.</p>
-<a href="https://fakeapi.platzi.com/" target="_blank" aria-label="Go to product page">
-  <button className="ShowApi__button">Buy Now</button>
+<a href="https://fakeapi.platzi.com/" target="_blank" rel="noopener noreferrer" aria-label="Go to product page">
+  <button className="ShowApi__button">Watch Api</button>
 </a>
 </div>
 
