@@ -1,5 +1,5 @@
 import React from "react";
-import Products from "./Api";
+import Products from "./Products";
 import "./ProductsStyles.css";
 
 const SectionProducts = ()=>{
