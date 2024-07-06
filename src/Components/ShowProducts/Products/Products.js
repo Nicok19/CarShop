@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useFetchProducts from '../../Shared/CustomHooks/GetFetchApi';
 import PriceFilter from './PriceFilter';
+import ProductSkeleton from '../Skeleton/ProductSkeleton'; 
+import './Products.css';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -30,34 +32,33 @@ const Products = () => {
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const handleSearchChange = event => {
+  const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleCategoryChange = event => {
+  const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
   useEffect(() => {
-    let filtered = products.filter(product => {
+    let filtered = products.filter((product) => {
       const titleMatch = product.title.toLowerCase().includes(searchTerm.toLowerCase());
       const categoryMatch = selectedCategory ? product.category.name === selectedCategory : true;
-      const priceMatch = (minPrice === '' || product.price >= parseFloat(minPrice)) && (maxPrice === '' || product.price <= parseFloat(maxPrice));
+      const priceMatch =
+        (minPrice === '' || product.price >= parseFloat(minPrice)) &&
+        (maxPrice === '' || product.price <= parseFloat(maxPrice));
       return titleMatch && categoryMatch && priceMatch;
     });
 
     setFilteredProducts(filtered);
   }, [searchTerm, selectedCategory, minPrice, maxPrice, products]);
 
-  const categories = Array.from(new Set(products.map(product => product.category.name)));
-
-  if (loading) return <div className='loadingelement'>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  const categories = Array.from(new Set(products.map((product) => product.category.name)));
 
   const handleImageError = (event) => {
-    event.target.src = 'https://i.imgur.com/qZx2cU5.jpg'; 
+    event.target.src = 'https://i.imgur.com/qZx2cU5.jpg';
   };
 
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
@@ -67,17 +68,17 @@ const Products = () => {
     <div className='apiAndFliter'>
       <div className='filterMenu'>
         <div className='searchElement'>
-          <img src="https://i.imgur.com/1jR01kG.jpg" alt="magnifying glass" />
+          <img src='https://i.imgur.com/1jR01kG.jpg' alt='magnifying glass' />
           <input
-            type="text"
-            placeholder="Search by products..."
+            type='text'
+            placeholder='Search by products...'
             value={searchTerm}
             onChange={handleSearchChange}
           />
         </div>
         <select className='categoryFilter' value={selectedCategory} onChange={handleCategoryChange}>
-          <option value="">All categories</option>
-          {categories.map(category => (
+          <option value=''>All categories</option>
+          {categories.map((category) => (
             <option key={category} value={category}>
               {category}
             </option>
@@ -87,14 +88,16 @@ const Products = () => {
       </div>
 
       <div className='containerProducts'>
-        {currentProducts.length > 0 ? (
-          currentProducts.map(product => (
+        {loading ? (
+          Array.from({ length: productsPerPage }).map((_, index) => <ProductSkeleton key={index} />)
+        ) : currentProducts.length > 0 ? (
+          currentProducts.map((product) => (
             <div className='allProducts' key={product.id}>
               <p className='category'>{product.category.name}</p>
               {product.images.length > 0 && product.images[0] ? (
                 <img src={product.images[0]} alt={product.title} onError={handleImageError} />
               ) : (
-                <img src="https://i.imgur.com/Wr87vI8.jpg" alt="Default" />
+                <img src='https://i.imgur.com/Wr87vI8.jpg' alt='Default' />
               )}
               <div className='product'>
                 <h3>
@@ -107,13 +110,17 @@ const Products = () => {
             </div>
           ))
         ) : (
-          <img className='notFound' src="/img/notFound.png" alt="Product not found" />
+          <img className='notFound' src='/img/notFound.png' alt='Product not found' />
         )}
       </div>
 
       <div className='pagination'>
         {Array.from({ length: Math.min(totalPages, maxPagesToShow) }, (_, index) => (
-          <button className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'} key={index + 1} onClick={() => paginate(index + 1)}>
+          <button
+            className={currentPage === index + 1 ? 'paginationButton active' : 'paginationButton'}
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+          >
             {index + 1}
           </button>
         ))}
@@ -123,6 +130,7 @@ const Products = () => {
 };
 
 export default Products;
+
 
 
 

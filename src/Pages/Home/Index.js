@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from "react-route
 import { AppProvider } from "../AppContext";
 import Header from "../../Components/Shared/Header/index";
 import "./Index.css";
-import SectionProducts from "../../Components/ShowProducts/Products";
+import SectionProducts from "../../Components/ShowProducts/index";
 import Footer from "../../Components/Shared/Footer/index";
 import Banner from "../../Components/Home/Banner";
 import ShowApi from "../../Components/Home/ShowApi/Index";
-import ProductDetail from "../../Components/ShowProducts/Products/ProductDetail"; 
+import ProductDetail from "../../Components/ShowProducts/ProductDetail/ProductDetail"; 
 
 const AppContent = () => {
   const location = useLocation();

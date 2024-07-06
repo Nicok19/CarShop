@@ -1,0 +1,46 @@
+/* Estilos para el skeleton loading */
+.skeletonProduct {
+    width: 300px;
+    margin: 20px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .categorySkeleton {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 80px;
+    height: 16px;
+    background-color: #2FB295;
+    border-radius: 8px;
+  }
+  
+  .imageSkeleton {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+  }
+  
+  .productSkeleton {
+    width: 70%;
+    height: 16px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .priceDivSkeleton {
+    width: 40%;
+    height: 16px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+  }
+  
+  

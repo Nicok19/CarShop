@@ -14,22 +14,16 @@
     margin-bottom: 700px;
 }
 
-.indexElements h2{
-    font-size: 30px;
-    margin-top: 350px;
-    margin-bottom: 60px;
-    text-align: center;
-    color: grey; 
-    font-weight: bold;
-}
 
 .containerProducts {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content:center;
-    margin-top: 50px;
+    padding-top: 8rem;
     min-height: 900px;
+    width: 1440px;
+    margin: auto;
 }
 
 .allProducts {

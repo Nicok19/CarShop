@@ -1,6 +1,6 @@
 import React from "react";
-import Products from "./Products";
-import "./ProductsStyles.css";
+import Products from "./Products/Products";
+import "./index.css";
 
 const SectionProducts = ()=>{
 return(
