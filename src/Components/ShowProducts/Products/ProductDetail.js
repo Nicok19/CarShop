@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { productSlug } = useParams();
@@ -34,17 +35,32 @@ const ProductDetail = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div>
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      <p>{product.price} USD</p>
+    <div className='container'>
+
+    <div className='product__data'>
+      <h1 className='product__title' >{product.title}</h1>
+      <p className='product__description'>{product.description}</p>
+      <p className='product__price'>{product.price} USD</p>
+
+      </div>
+
+      <div className='product__image'> 
       {product.images.length > 0 ? (
         product.images.map((image, index) => (
+         
           <img key={index} src={image} alt={product.title} />
         ))
+        
       ) : (
         <img src={defaultImage} alt="Default" />
       )}
+      </div>
+
+      <a href='/'>
+      <button className='product__button'>Back</button>
+      </a>
+
+
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import "./HeaderStyles.css";
-import  Card from "../Card/card";
 
 
 const Header = () => {
@@ -35,8 +34,6 @@ const Header = () => {
         <div className="header__Ritgh">
    
     <img className="header__icon" src="https://imgur.com/S2vh5Dd.png" alt="Carshop Elements" />
-
-    <Card/>
 
     <button className="header__menu">Log In </button>
     

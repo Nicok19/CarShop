@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import { AppProvider } from "../AppContext";
-import Header from "../../Components/Header";
+import Header from "../../Components/Shared/Header/index";
 import "./Index.css";
 import SectionProducts from "../../Components/ShowProducts/Products";
-import Footer from "../../Components/Footer";
+import Footer from "../../Components/Shared/Footer/index";
 import Banner from "../../Components/Home/Banner";
 import ShowApi from "../../Components/Home/ShowApi/Index";
 import ProductDetail from "../../Components/ShowProducts/Products/ProductDetail"; 
@@ -22,7 +22,7 @@ const AppContent = () => {
         <Route path="/:productSlug" element={<ProductDetail />} />
       </Routes>
       {isHomePage && <ShowApi />}
-      <Footer />
+      {isHomePage && <Footer />}
     </div>
   );
 };
@@ -38,4 +38,5 @@ const App = () => {
 };
 
 export default App;
+
 
