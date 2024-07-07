@@ -1,0 +1,40 @@
+ProductDetail Component Documentation
+
+Overview:
+The ProductDetail component is a React functional component designed to fetch and display detailed information about a specific product in an online store. It utilizes React Router's `useParams` hook to retrieve the product slug from the URL, which is then used to fetch the product's details from an API.
+
+Details:
+
+- **State Variables**:
+  - `product`: Holds the detailed information of the product fetched from the API. It is initially set to `null`.
+  - `loading`: A boolean state that indicates whether the product data is being fetched. It is initially set to `true`.
+  - `error`: Stores any error that occurs during the fetch operation. It is initially set to `null`.
+
+- **useParams Hook**:
+  - Purpose: To extract the `productSlug` parameter from the URL, which uniquely identifies the product to be displayed.
+
+- **useEffect Hook**:
+  - Behavior: On component mount, it defines and immediately invokes the `fetchProduct` asynchronous function.
+  - `fetchProduct` Function:
+    - Fetches the list of products from the API endpoint `https://api.escuelajs.co/api/v1/products`.
+    - Parses the response to JSON and searches for the product that matches the `productSlug` from the URL.
+    - If a matching product is found, it updates the `product` state with the product's details and sets `loading` to `false`.
+    - If no matching product is found or if an error occurs during the fetch operation, it sets the `error` state accordingly.
+
+Usage:
+- The ProductDetail component is used to display detailed information about a product selected by the user. It is typically used in routes that include a product slug as a URL parameter.
+- It is suitable for e-commerce websites or any application that requires displaying detailed information about a specific item from a list of items.
+
+Example:
+```javascript
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ProductDetail from './ProductDetail';
+
+function App() {
+  return (
+    <Router>
+      <Route path="/product/:productSlug" component={ProductDetail} />
+    </Router>
+  );
+}

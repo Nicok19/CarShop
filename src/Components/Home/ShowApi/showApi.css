@@ -1,5 +1,5 @@
 .showApi{
-    width: 100vw;
+    width: 100%;
     background-color: rgb(240, 239, 239);
     margin: auto;
     margin-top: 200px;
@@ -68,6 +68,8 @@
 /*Laptop*/
 
 @media screen and (max-width: 1440px){
+
+
     .showApi__container{
         width: 80%;
     }

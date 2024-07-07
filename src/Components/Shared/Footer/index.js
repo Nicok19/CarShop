@@ -5,10 +5,8 @@ const Footer = () => {
     const [isDynamicRoute, setIsDynamicRoute] = useState(false);
 
     useEffect(() => {
-        // Aquí deberías tener lógica para determinar si estás en una ruta dinámica
-        const currentPath = window.location.pathname; // Obtén la ruta actual
-        const isDynamic = currentPath.includes("/dynamic"); // Ejemplo de lógica para rutas dinámicas
-
+        const currentPath = window.location.pathname; 
+        const isDynamic = currentPath.includes("/dynamic"); 
         setIsDynamicRoute(isDynamic);
     }, []);
 

@@ -1,0 +1,38 @@
+ProductSkeleton Component Documentation
+
+Overview:
+The ProductSkeleton component is a React functional component designed to serve as a placeholder during the loading state of product information in a web application. It mimics the layout of a product card but without actual data, using styled div elements to represent the image, title, category, and price sections of a product card.
+
+Key Features:
+- Provides a visual cue to users that product data is being loaded, enhancing the user experience by reducing perceived loading times.
+- Utilizes CSS classes to create skeleton shapes that approximate the size and position of the actual product data elements.
+- Easily reusable and customizable to fit different product card layouts.
+
+Implementation Details:
+- The component consists of a main div with the class `skeletonProduct`, which acts as the container for the skeleton elements.
+- Inside the main container, there are several div elements each representing different parts of a product card:
+  - `categorySkeleton`: Mimics the category label of a product.
+  - `imageSkeleton`: Represents the product image.
+  - `productSkeleton`: Contains a `h3` element with the class `skeleton`, simulating the product title.
+  - `priceDivSkeleton`: Acts as a placeholder for the product's price.
+- The actual visual representation (e.g., the gray color, animation, etc.) is defined in the accompanying `ProductSkeleton.css` file, which is not detailed here but is crucial for the skeleton effect.
+
+Usage:
+- The ProductSkeleton component is used in web applications where product data is fetched from an API and there's a need to indicate to the user that data is currently being loaded.
+- It can be placed in the UI where product cards are expected to appear, before the actual product data is fetched and rendered.
+
+Example Usage:
+```javascript
+import React from 'react';
+import ProductSkeleton from './ProductSkeleton';
+
+function ProductList() {
+  return (
+    <div>
+      {/* Assuming products are being fetched and we're waiting for the data */}
+      <ProductSkeleton />
+      <ProductSkeleton />
+      {/* More <ProductSkeleton /> components as needed */}
+    </div>
+  );
+}
