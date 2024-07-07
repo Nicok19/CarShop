@@ -62,3 +62,105 @@
 .ShowApi__button:hover{
     background:#4A4EF5 ;
 }
+
+/*Responsive Area*/
+
+/*Laptop*/
+
+@media screen and (max-width: 1440px){
+    .showApi__container{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .showApi__container{
+        width: 80%;
+    }
+
+    .showApi__title{
+        font-size: 2rem;
+    }
+
+    .showApi__description{
+        font-size: 1rem;
+    }
+
+    .ShowApi__button{
+        font-size: 1rem;
+    }
+
+    .showApi__image{
+        height: 400px;
+    }
+
+}
+
+/*Tablet*/
+
+@media screen and (max-width: 768px){
+    .showApi__container{
+        width: 100%;
+        flex-direction: column;
+        height: 500px;
+    }
+
+    .showApi__image{
+        display: none;
+
+    }
+
+    .showApi__data{
+        width: 80%;
+        text-align: center;
+    }
+
+    .showApi__title{
+        font-size: rem;
+    }
+
+    .showApi__description{
+        font-size: 1rem;
+        line-height: 30px;
+    }
+
+    .ShowApi__button{
+        font-size: 1rem;
+    }
+}
+
+/*Cellphone*/
+
+@media screen and (max-width: 480px){
+    .showApi__container{
+        width: 100%;
+        flex-direction: column;
+        height: 500px;
+    }
+
+    .showApi__image{
+        display: none;
+
+    }
+
+    .showApi__data{
+        width: 80%;
+        text-align: center;
+    }
+
+    .showApi__title{
+        font-size: 1.5rem;
+    }
+
+    .showApi__description{
+        font-size: 1rem;
+        line-height: 30px;
+    }
+
+    .ShowApi__button{
+        font-size: 1rem;
+    }
+}
+
+
+

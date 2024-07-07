@@ -6,3 +6,28 @@
     color: grey; 
     font-weight: bold;
 }
+
+/*Responsive Area*/
+
+/*Laptop*/
+
+@media screen and (max-width: 1440px){
+    .indexElements h2{
+        margin-top: 35vh;
+    }
+}
+
+
+@media screen and (max-width: 1000px){
+    .indexElements h2{
+        margin-top: 150px;
+    }
+}
+
+/*Tablet*/
+
+@media screen and (max-width: 768px){
+    .indexElements h2{
+        margin-top: 50px;
+    }
+}

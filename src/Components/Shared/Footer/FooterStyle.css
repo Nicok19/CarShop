@@ -2,7 +2,7 @@
   width: 100%;
   background-color: #4A4EF5;
   height: 150px;
-  margin-top: auto; /* Asegura que el footer se quede pegado al pie */
+  margin-top: auto; 
 }
 
 .footerElements {
@@ -17,7 +17,11 @@
   width: 150px;  
 }
 
-.footerElements p {
+.footerElements__author {
+  color: white; 
+}
+
+.footerElements__api{
   color: white; 
 }
 
@@ -26,6 +30,52 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 1000; /* Ajusta según necesidades */
+  z-index: 1000; 
 }
+
+/*Responsive Area*/
+
+/*Laptop*/
+
+@media screen and (max-width: 1440px) {
+
+.footerElements{
+  width: 80%;
+}
+}
+
+@media screen and (max-width: 1000px) {
+
+  .footerElements__author {
+   font-size: 12px;
+  }
+
+  .footerElements__api {
+    display: none;
+  }
+  
+
+}
+
+/*Cellphone*/
+
+@media screen and (max-width: 468px) {
+
+  .footerElements {
+    flex-direction: column-reverse;
+  }
+
+  .footerElements img {
+    margin-top: 10px;
+  }
+
+  .footerElements__author {
+    font-size: 1rem;
+  }
+
+  .footerElements__api {
+    display: none;
+  }
+}
+
 

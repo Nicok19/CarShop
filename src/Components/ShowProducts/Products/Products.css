@@ -58,10 +58,14 @@
 
 .product h3 {
     font-size: 18px;
-    color: #2A2B4A;
+    color: #000000;
     font-weight: lighter;
     margin-top: 20px;
     height: 60px;
+}
+
+.product a{
+    color: black;
 }
 
 .priceDiv p {
@@ -143,8 +147,6 @@
      }
      
 
-
-
 .paginationButton{
 padding: 5px;
 padding-right: 10px;
@@ -171,6 +173,145 @@ color: black;
     margin: auto;
     margin-top: 100px;
 }
+
+/*Responsive Area*/
+
+/*Laptop*/
+
+@media screen and (max-width: 1440px) {
+
+    
+.containerProducts {
+    width: 80%;
+}
+
+.searchElement input {
+    width: 15vw;
+}
+
+.categoryFilter{
+    width: 12vw;
+    margin-right: 2vw;
+    margin-left: 2vw;
+}
+
+#minPrice{
+    width: 12vw;
+    margin-right: 2vw;
+}
+
+#maxPrice{
+    width: 12vw;
+}
+
+.product h3 {
+    font-size: 15px;
+}
+
+.priceDiv p {
+    font-size: 18px;
+}
+
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    
+    .containerProducts {
+        width: 80%;
+    }
+
+    }
+
+    
+/*Tablet*/
+
+@media screen and (max-width: 768px) {
+
+        
+        .containerProducts {
+            width: 80%;
+        }
+    
+        .categoryFilter{
+            width: 100px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 2px;
+        font-size: 10px
+    }
+    
+            .filterMenu{
+                width: 80%;
+                margin: auto;
+                
+            }
+    
+            .searchElement input {
+                width: 150px;
+                font-size: 10px;
+                padding-left: 5px;
+            }
+    
+            .searchElement img{
+                display: none;
+            }
+    
+            #minPrice{
+                width: 100px;
+                font-size: 10px;
+            }
+    
+            #maxPrice{
+                width: 100px;
+                font-size: 10px
+            }
+         
+    
+        }
+    
+        /*Mobile*/
+    
+        @media screen and (max-width: 468px) {
+    
+        
+            .containerProducts {
+                width: 80%;
+                padding-top: 40px;
+            }
+    
+            .categoryFilter{
+                width: 100%;
+            margin-left: 0px;
+            margin-bottom: 30px;
+            margin-right: 0px;}
+    
+                .filterMenu{
+                    width: 80%;
+                    margin: auto;
+                    flex-direction: column;
+                }
+    
+                .searchElement input {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+    
+                .searchElement img{
+                    display: none;
+                }
+    
+                #minPrice{
+                    width: 47.5%;
+                }
+    
+                #maxPrice{
+                    width: 47.5%;
+                }
+
+}
+    
 
 
 

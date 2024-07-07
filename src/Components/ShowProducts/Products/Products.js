@@ -9,7 +9,8 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(8);
+  const [productsPerPage, setProductsPerPage] = useState(8);
+  const [maxPagesToShow, setMaxPagesToShow] = useState(10);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [minPrice, setMinPrice] = useState('');
@@ -22,6 +23,25 @@ const Products = () => {
       setFilteredProducts(fetchedProducts);
     }
   }, [loading, fetchedProducts]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1450) {
+        setProductsPerPage(6);
+      } else {
+        setProductsPerPage(8);
+      }
+      if (window.innerWidth <= 468) {
+        setMaxPagesToShow(5);
+      } else {
+        setMaxPagesToShow(10);
+      }
+    };
+
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const applyPriceFilter = (min, max) => {
     setMinPrice(min.toString());
@@ -62,7 +82,6 @@ const Products = () => {
   };
 
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-  const maxPagesToShow = 10;
 
   return (
     <div className='apiAndFliter'>
@@ -130,8 +149,6 @@ const Products = () => {
 };
 
 export default Products;
-
-
 
 
 
