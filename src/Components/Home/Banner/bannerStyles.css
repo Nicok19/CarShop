@@ -1,0 +1,200 @@
+.banner{
+    width: 1440px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.banner__image{
+    width: 1440px;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.banner__data{
+    width: 643px;
+    height: 443px;
+    left: 56%;
+    top: 12vh;
+    border-radius: 10px;
+    background: white;
+    position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+}
+
+.banner__title{
+color:  #4A4EF5;;
+font-size: 52px;
+font-style: normal;
+font-weight: 700;
+line-height: 65px; 
+margin-bottom: 30px;
+}
+
+.banner__description{
+color: var(--Font-Color, #333);
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px;
+width: 470px; 
+}
+
+.banner__button{
+    width: 200px;
+    height: 50px;
+    background:  #4A4EF5;;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.banner__button:hover{
+    background: #333;
+}
+
+
+/*Responsive Area*/
+
+/*Laptop*/
+
+@media screen and (max-width: 1440px) {
+
+    .banner{
+        width: 85%;
+    }
+    .banner__data{
+        width: 40vw;
+        height: 50vh;
+    }
+
+    .banner__elements{
+        width: 30vw;
+        height: 30vh;
+    }
+
+    .banner__image{
+        width: 85%;
+    }
+    
+    .banner__title{
+     font-size: 2.5vw;
+    margin-bottom: 0px;
+    }
+    
+    .banner__description{
+    font-size: 1vw;
+    width: 80%;
+    }
+    
+    .banner__button{
+        width: 150px;
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .banner__elements{
+        width: 900px;
+        margin-right: 0px;
+    }
+    
+    
+    .banner__image{
+        position: relative;
+        width: 100%;
+    }
+    
+    .banner__data{
+        width: 85vw;
+        height: 300px;
+        left: 0%;
+        top: 6vh;
+        position: relative;
+         align-items: center;
+         justify-content: center;
+    }
+    
+    .banner__title{
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+    }
+    
+    .banner__description{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 30px;
+    width: 70%; 
+    text-align: center;
+    }
+
+ 
+    .banner__elements{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .banner__button{
+        width: 130px;
+    }
+    
+}
+
+/*Tablet*/
+
+@media screen and (max-width: 768px) {
+
+    .banner__data{
+       top:0px
+      }
+
+
+    .banner__title{
+        font-size: 2rem;
+        margin-bottom: 0px;
+    }
+    
+    .banner__description{
+        font-size: 1rem;
+        width: 80%;
+    }
+    
+    .banner__button{
+        width: 150px;
+    }
+    
+}
+
+
+/*cellphone*/
+
+@media screen and (max-width: 468px) {
+
+    .banner__title{
+        font-size: 1.5rem;
+    }
+    
+    .banner__description{
+        font-size: 0.8rem;
+        width: 80%;
+    }
+    
+    .banner__button{
+        width: 150px;
+    }
+}

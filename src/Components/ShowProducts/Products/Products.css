@@ -1,0 +1,317 @@
+.apiAndFliter{
+    min-height: 900px;
+}
+
+
+.filterMenu{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.loadingelement{
+    margin-bottom: 700px;
+}
+
+
+.containerProducts {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:center;
+    padding-top: 8rem;
+    min-height: 900px;
+    width: 1440px;
+    margin: auto;
+}
+
+.allProducts {
+    width: 300px;
+    margin: 20px;
+    position: relative; 
+}
+
+
+.allProducts img{
+    width: 300px;
+    border-radius: 20px;
+}
+
+.productImage {
+    width: 100%;
+    
+}
+
+.category {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    padding: 5px;
+    background-color: #2FB295;
+    width: 90px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 10px;
+    color: white;
+}
+
+.product h3 {
+    font-size: 18px;
+    color: #000000;
+    font-weight: lighter;
+    margin-top: 20px;
+    height: 60px;
+}
+
+.product a{
+    color: black;
+}
+
+.priceDiv p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4A4EF5;
+}
+
+
+.priceFilter{
+   display: inline-block;
+}
+
+#minPrice{
+   font-size: 15px; 
+   padding-left: 20px;
+   border-radius: 10px;
+   margin-right: 20px;
+   height: 50px;
+   color: grey;
+   border:  solid 1px grey;
+}
+
+#maxPrice{
+    font-size: 15px; 
+    padding-left: 20px;
+    border-radius: 10px;
+    margin-right: 7px;
+    height: 50px;
+    color: grey;
+    border:  solid 1px grey;
+ }
+
+.textProducts h2{
+    font-size: 26px;
+}
+
+
+.searchElement {
+    position: relative; 
+}
+
+.searchElement input {
+    padding: 10px 50px 10px 20px; 
+    border-radius: 10px;
+    border: 1px solid grey;
+    color: grey;
+    position: relative; 
+    height: 50px;
+    width: 300px;
+}
+
+.searchElement img {
+    position: absolute;
+    top: 45%; 
+    right: 10px; 
+    transform: translateY(-50%); 
+    width: 20px;
+    height: 25px;
+    z-index: 1; 
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.categoryFilter{
+    padding-left: 20px;
+    border-radius: 10px;
+     margin-left: 30px;
+     margin-right: 50px;
+     height: 50px;
+     width: 200px;
+     border: 1px solid grey;
+     color: grey;
+     }
+     
+
+.paginationButton{
+padding: 5px;
+padding-right: 10px;
+padding-left: 10px;
+margin-right: 10px;
+border-radius: 10px;
+border: none;
+background-color: white;
+border: solid 1px black;
+color: black;
+}
+
+.paginationButton:hover{
+    background-color: #F9B510;
+}
+
+.paginationButton.active {
+    background-color: grey;
+    color: white;
+}
+
+.notFound{
+    width: 300px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+/*Responsive Area*/
+
+/*Laptop*/
+
+@media screen and (max-width: 1440px) {
+
+    
+.containerProducts {
+    width: 80%;
+}
+
+.searchElement input {
+    width: 15vw;
+}
+
+.categoryFilter{
+    width: 12vw;
+    margin-right: 2vw;
+    margin-left: 2vw;
+}
+
+#minPrice{
+    width: 12vw;
+    margin-right: 2vw;
+}
+
+#maxPrice{
+    width: 12vw;
+}
+
+.product h3 {
+    font-size: 15px;
+}
+
+.priceDiv p {
+    font-size: 18px;
+}
+
+}
+
+
+@media screen and (max-width: 1000px) {
+
+    
+    .containerProducts {
+        width: 80%;
+    }
+
+    }
+
+    
+/*Tablet*/
+
+@media screen and (max-width: 768px) {
+
+        
+        .containerProducts {
+            width: 80%;
+        }
+    
+        .categoryFilter{
+            width: 100px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 2px;
+        font-size: 10px
+    }
+    
+            .filterMenu{
+                width: 80%;
+                margin: auto;
+                
+            }
+    
+            .searchElement input {
+                width: 150px;
+                font-size: 10px;
+                padding-left: 5px;
+            }
+    
+            .searchElement img{
+                display: none;
+            }
+    
+            #minPrice{
+                width: 100px;
+                font-size: 10px;
+            }
+    
+            #maxPrice{
+                width: 100px;
+                font-size: 10px
+            }
+         
+    
+        }
+    
+        /*Mobile*/
+    
+        @media screen and (max-width: 468px) {
+    
+        
+            .containerProducts {
+                width: 80%;
+                padding-top: 40px;
+            }
+    
+            .categoryFilter{
+                width: 100%;
+            margin-left: 0px;
+            margin-bottom: 30px;
+            margin-right: 0px;}
+    
+                .filterMenu{
+                    width: 80%;
+                    margin: auto;
+                    flex-direction: column;
+                }
+    
+                .searchElement input {
+                    width: 100%;
+                    margin-bottom: 20px;
+                }
+    
+                .searchElement img{
+                    display: none;
+                }
+    
+                #minPrice{
+                    width: 47.5%;
+                }
+    
+                #maxPrice{
+                    width: 47.5%;
+                }
+
+}
+    
+
+
+

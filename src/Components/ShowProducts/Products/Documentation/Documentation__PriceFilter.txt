@@ -1,0 +1,38 @@
+PriceFilter Component Documentation
+
+Overview:
+The PriceFilter component is a React functional component designed to provide a user interface for filtering items based on a price range. It allows users to input minimum and maximum price values, which are then used to filter the items.
+
+Details:
+
+- **State Variables**:
+  - `minPrice`: Holds the value of the minimum price input by the user. It is initially set to an empty string.
+  - `maxPrice`: Holds the value of the maximum price input by the user. It is initially set to an empty string.
+
+- **useEffect Hook**:
+  - Purpose: To react to changes in the `minPrice` and `maxPrice` state variables and apply the price filter accordingly.
+  - Behavior: Whenever `minPrice` or `maxPrice` changes, the effect callback function is executed. It converts the `minPrice` and `maxPrice` values from strings to floats (using `parseFloat`). If no value is entered by the user, `minPrice` defaults to `0` and `maxPrice` defaults to `Infinity`.
+  - The `applyPriceFilter` function, received as a prop, is then called with the `min` and `max` values as arguments to apply the filter.
+
+- **Rendering**:
+  - The component renders two input fields for the user to enter the minimum and maximum prices. These inputs are of type `number` and have placeholders to indicate their purpose.
+  - The `value` of each input is bound to the corresponding state variable (`minPrice` and `maxPrice`), and the `onChange` event updates these state variables with the input value.
+
+Usage:
+- The PriceFilter component is used in applications where items need to be filtered based on price range, such as e-commerce platforms.
+- It should be placed in a part of the UI where filters are accessible to the user, typically alongside other filtering options.
+
+Example:
+```javascript
+function App() {
+  const applyPriceFilter = (min, max) => {
+    // Logic to filter items based on price range
+  };
+
+  return (
+    <div>
+      <PriceFilter applyPriceFilter={applyPriceFilter} />
+      {/* Other components */}
+    </div>
+  );
+}

@@ -1,0 +1,41 @@
+Header Component Documentation
+
+Overview:
+The Header component is a React functional component that provides a responsive navigation header. It uses state and effects to dynamically adjust its layout and behavior based on the browser window's width, specifically targeting mobile devices.
+
+Details:
+
+- **State Variables**:
+  - `isMobile`: A boolean state that determines if the current device is considered mobile. It is true if the window's inner width is less than or equal to 768 pixels.
+  - `menuOpen`: A boolean state that tracks whether the mobile navigation menu is open or closed.
+
+- **useEffect Hook**:
+  - Purpose: To add and clean up a resize event listener on the window object. This event listener adjusts the `isMobile` and `menuOpen` states based on the window's width.
+  - Behavior:
+    - On component mount, it adds a `resize` event listener that:
+      - Updates `isMobile` to true if the window width is less than or equal to 768 pixels, otherwise false.
+      - Sets `menuOpen` to false if the window width is greater than 768 pixels, ensuring the mobile menu is closed on non-mobile devices.
+    - On component unmount, it removes the `resize` event listener to prevent memory leaks.
+
+- **Responsive Design**:
+  - The component is designed to be responsive, automatically adjusting its layout and functionality based on the browser's width.
+  - The `isMobile` state enables the component to render different UI elements or styles conditionally, tailored for mobile or desktop views.
+  - The `menuOpen` state allows for conditional rendering of a mobile navigation menu, which can be toggled based on user interaction and window resizing.
+
+Usage:
+- The Header component can be used in any React application that requires a responsive navigation header.
+- It is particularly useful in single-page applications (SPAs) and websites that aim to provide a seamless user experience across various device sizes.
+
+Example:
+```javascript
+import React from 'react';
+import Header from './Header';
+
+function App() {
+  return (
+    <div>
+      <Header />
+      {/* Other components */}
+    </div>
+  );
+}

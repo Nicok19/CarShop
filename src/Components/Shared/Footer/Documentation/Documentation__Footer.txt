@@ -1,0 +1,38 @@
+Footer Component Documentation
+
+Overview:
+The Footer component is a React functional component designed to display a footer section on a web page. It includes conditional styling to adjust its position based on the current route of the application. The footer displays the creator's name, an API reference, and a brand logo.
+
+Key Features:
+- Dynamically adjusts its CSS class based on the current route, specifically adding a 'sticky-footer' class if the route includes "/dynamic".
+- Displays static content including the creator's name, an API URL, and a brand logo image.
+
+Implementation Details:
+- **State Management**: Utilizes React's useState hook to manage the state `isDynamicRoute`, which indicates whether the current route is dynamic.
+- **Effect Hook**: Uses React's useEffect hook to set the `isDynamicRoute` state based on the current window location. The effect runs once on component mount.
+  - The `currentPath` variable holds the current window location pathname.
+  - The `isDynamic` variable is a boolean indicating whether the current path includes "/dynamic".
+  - The `setIsDynamicRoute` function updates the `isDynamicRoute` state based on the `isDynamic` variable.
+- **Conditional Styling**: Applies the 'sticky-footer' class to the footer div if `isDynamicRoute` is true, adjusting the footer's position based on the route.
+- **Static Content**: The footer displays the following static content:
+  - A paragraph with the class `footerElements__author` showing the creator's name.
+  - A paragraph with the class `footerElements__api` displaying an API URL.
+  - An image element showing a brand logo with a specified source URL and alt text.
+
+Usage:
+- The Footer component is designed to be used across various pages of a web application to provide consistent footer content.
+- Its dynamic styling feature makes it suitable for applications with both static and dynamic routes, allowing for flexible footer positioning.
+
+Example Usage:
+```javascript
+import React from 'react';
+import Footer from './Footer';
+
+function App() {
+  return (
+    <div className="appContainer">
+      {/* Other components */}
+      <Footer />
+    </div>
+  );
+}
