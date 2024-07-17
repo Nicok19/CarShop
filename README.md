@@ -1,4 +1,4 @@
-# GlobalShop Project
+# GlobalShop Project New Version
 
 Welcome to the GlobalShop Website project repository! This project aims to create a basic sample of an eCommerce website.
 
